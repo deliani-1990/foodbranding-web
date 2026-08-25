@@ -7,4 +7,10 @@ Allow: /
 # Al publicarla: borrar estas dos lineas y el noindex de su <head>.
 Disallow: /ordena-por-whatsapp/
 
+# Menus de clientes. Siguen funcionando por su enlace directo y por los codigos QR:
+# esto solo evita que aparezcan en los resultados de busqueda de Google.
+# Decision de Deliani, 25 ago 2026.
+Disallow: /menus-moviles/
+Disallow: /menu/
+
 Sitemap: https://www.foodbrandingpr.com/sitemap.xml
