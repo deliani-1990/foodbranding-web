@@ -1,0 +1,10 @@
+# FoodBranding PR — www.foodbrandingpr.com
+
+User-agent: *
+Allow: /
+
+# Borrador sin publicar: precios pendientes de confirmar con JCTech.
+# Al publicar esa pagina, borrar estas dos lineas y el noindex de su <head>.
+Disallow: /ordena-por-whatsapp/
+
+Sitemap: https://www.foodbrandingpr.com/sitemap.xml

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- Redireccion de una URL del sitio anterior (WordPress). GitHub Pages no permite
+       redirecciones 301 del lado del servidor, asi que se hace con meta refresh + canonical:
+       Google la trata como una redireccion permanente y el visitante no ve nada raro.
+       Si algun dia el sitio se muda a un hosting con .htaccess o nginx, cambiar esto por
+       un 301 de verdad y borrar esta carpeta. -->
+  <meta http-equiv="refresh" content="0; url=/#contacto">
+  <link rel="canonical" href="https://www.foodbrandingpr.com/#contacto">
+  <meta name="robots" content="noindex">
+  <title>Redirigiendo | FoodBranding PR</title>
+  <script>window.location.replace('/#contacto');</script>
+  <style>
+    body{font-family:system-ui,sans-serif;background:#17161a;color:#e8eaf0;
+         display:flex;min-height:100vh;align-items:center;justify-content:center;
+         text-align:center;padding:24px;margin:0;line-height:1.6}
+    a{color:#5CB33F}
+  </style>
+</head>
+<body>
+  <p>Esta página se movió.<br>
+  Te estamos llevando a el formulario de contacto.<br>
+  <a href="/#contacto">Si no pasa nada, entra aquí.</a></p>
+</body>
+</html>

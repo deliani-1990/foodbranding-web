@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consultoría y desarrollo de restaurantes en Puerto Rico. Estructuramos tu concepto, tu operación y tus números: menú, costeo, equipo y mercadeo.">
+  <link rel="canonical" href="https://www.foodbrandingpr.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FoodBranding PR">
+  <meta property="og:locale" content="es_PR">
+  <meta property="og:url" content="https://www.foodbrandingpr.com/">
+  <meta property="og:title" content="FoodBranding PR | Consultoría y Desarrollo de Restaurantes">
+  <meta property="og:description" content="Consultoría y desarrollo de restaurantes en Puerto Rico. Estructuramos tu concepto, tu operación y tus números: menú, costeo, equipo y mercadeo.">
+  <meta property="og:image" content="https://www.foodbrandingpr.com/images/og-foodbranding.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FoodBranding PR | Consultoría y Desarrollo de Restaurantes">
+  <meta name="twitter:description" content="Consultoría y desarrollo de restaurantes en Puerto Rico. Estructuramos tu concepto, tu operación y tus números: menú, costeo, equipo y mercadeo.">
+  <meta name="twitter:image" content="https://www.foodbrandingpr.com/images/og-foodbranding.jpg">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <title>FoodBranding | Desde la idea hasta el éxito</title>
+  <link rel="stylesheet" href="shared.css">
+  <script>
+  (function(){
+    var saved = localStorage.getItem('fb-theme');
+    var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', saved || (dark ? 'dark' : 'light'));
+  })();
+  </script>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="fb-progress-bar"></div>
+
+<!-- SIDE MENU OVERLAY -->
+<div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+
+<!-- SIDE PANEL -->
+<div class="side-panel" id="sidePanel">
+  <div class="side-top">
+    <span>&#9990; (787) 510-0010</span>
+    <span>&#9993; info@foodbrandingpr.com</span>
+  </div>
+  <button class="side-close" onclick="closeMenu()" aria-label="Cerrar">&#10005;</button>
+  <nav class="side-nav">
+    <a href="index.html">Home</a>
+    <a href="creacion-de-conceptos/index.html">Creación &amp; Desarrollo de Restaurantes</a>
+    <a href="costeo-de-recetas/index.html">Costeo de Recetas</a>
+    <a href="entrenamiento-de-empleados/index.html">Entrenamiento de Empleados</a>
+    <a href="diseno-de-menus/index.html">Diseño de Menús</a>
+    <a href="mercadeo-digital/index.html">Mercadeo Digital</a>
+  </nav>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html"><img src="images/fb_logo.webp" height="44" alt="FoodBranding"></a>
+  <div class="nav-actions">
+    <button class="fb-theme-toggle" id="fbThemeToggle" aria-label="Cambiar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="5" fill="rgba(255,255,255,0.85)"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="rgba(255,255,255,0.75)"/></svg>
+    </button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menú" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero hero--home" style="background-image:url('images/hero-home.webp'); background-position:center;">
+  <div class="hero-content">
+    <h1 class="hero-title">ESTRATEGIA Y DESARROLLO DE RESTAURANTES EN PUERTO RICO</h1>
+    <p class="hero-sub">Acompañamos a dueños y emprendedores de restaurantes: estructuramos tu concepto, tu operación y tus números. Contigo desde la idea hasta el éxito.</p>
+    <a href="#contacto" class="btn btn-outline-blanco hero-btn">AGENDA UNA REUNIÓN</a>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="fade-in">
+  <div class="inner">
+    <span class="tag">NUESTRO ENFOQUE</span>
+    <h2>ESTRATEGIA PRIMERO, EJECUCIÓN DESPUÉS</h2>
+    <p>En FoodBranding no vendemos servicios sueltos. Empezamos por la estrategia de tu restaurante —tu concepto, tu operación y tus números— y desde ahí conectamos cada entregable a un objetivo real de rentabilidad. Todo se ancla a un plan, nunca al revés.</p>
+
+    <!-- SERVICIO PRINCIPAL -->
+    <a href="creacion-de-conceptos/index.html" class="servicio-featured fade-in" style="background:linear-gradient(100deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.8) 48%, rgba(0,0,0,.45) 100%), url('images/card-creacion-conceptos.webp') center/cover;">
+      <div class="servicio-featured-body">
+        <span class="servicio-featured-tag">Servicio principal</span>
+        <h3>Creación &amp; Desarrollo de Restaurantes</h3>
+        <p>Lo que sostiene todo lo demás. Creamos conceptos nuevos desde cero y reestructuramos restaurantes que ya operan — mercado, menú, costeo, equipo y lanzamiento. Contigo en cada etapa.</p>
+        <span class="servicio-featured-cta">Conoce el proceso &#8594;</span>
+      </div>
+    </a>
+
+    <span class="servicios-sub-label">Servicios de apoyo</span>
+    <p class="servicios-sub-desc">Cada uno se conecta a tu estrategia — nunca como piezas sueltas.</p>
+    <div class="servicios-grid">
+      <a href="costeo-de-recetas/index.html" class="servicio-card fade-in" style="background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.8)), url('images/card-costeo-recetas.webp') center/cover;"><span>Costeo de Recetas</span></a>
+      <a href="entrenamiento-de-empleados/index.html" class="servicio-card fade-in" style="background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.8)), url('images/card-entrenamiento-empleados.webp') center/cover, #17161a;"><span>Entrenamiento de Empleados</span></a>
+      <a href="diseno-de-menus/index.html" class="servicio-card fade-in" style="background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.8)), url('images/card-diseno-menus.webp') center/cover;"><span>Diseño de Menús</span></a>
+      <a href="mercadeo-digital/index.html" class="servicio-card fade-in" style="background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.8)), url('images/card-mercadeo-digital.webp') center/cover;"><span>Mercadeo Digital</span></a>
+    </div>
+    <a href="#contacto" class="btn btn-amarillo">AGENDA UNA REUNIÓN</a>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section id="valores" class="fade-in">
+  <div class="inner">
+    <div class="valores-inner">
+      <div class="valores-left fade-left" style="background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)), url('images/valores.webp') 50% 15%/cover; min-height:430px;">
+        <div class="linea-acento"></div>
+        <p style="color:#fff;">15 años de experiencia en la Industria de Alimentos y Bebidas</p>
+      </div>
+      <div class="valores-right fade-right">
+        <span class="tag">NUESTROS VALORES</span>
+        <h2>QUEREMOS CONECTAR</h2>
+        <p>En FoodBranding, nos enfocamos en construir relaciones saludables basadas en la transparencia y la integridad. Creemos que el éxito se logra al ir más allá de lo convencional, colaborando mano a mano con nuestros clientes para alcanzar sus objetivos.</p>
+        <div class="valor-item fade-in-stagger" style="transition-delay:0.05s">
+          <span class="valor-icon">&#10003;</span>
+          <div><h4>Comunidad</h4><p>Construimos redes de apoyo que fortalecen a la industria local.</p></div>
+        </div>
+        <div class="valor-item fade-in-stagger" style="transition-delay:0.15s">
+          <span class="valor-icon">&#10003;</span>
+          <div><h4>Integridad</h4><p>Actuamos con honestidad y ética en cada decisión que tomamos.</p></div>
+        </div>
+        <div class="valor-item fade-in-stagger" style="transition-delay:0.25s">
+          <span class="valor-icon">&#10003;</span>
+          <div><h4>Enfoque</h4><p>Nos concentramos en los objetivos de cada cliente con dedicación total.</p></div>
+        </div>
+        <div class="valor-item fade-in-stagger" style="transition-delay:0.35s">
+          <span class="valor-icon">&#10003;</span>
+          <div><h4>Transparencia</h4><p>Comunicación clara y abierta en cada etapa del proceso.</p></div>
+        </div>
+        <div class="valor-item fade-in-stagger" style="transition-delay:0.45s">
+          <span class="valor-icon">&#10003;</span>
+          <div><h4>Visión</h4><p>Pensamos a largo plazo para garantizar el crecimiento sostenido.</p></div>
+        </div>
+        <br>
+        <a href="#contacto" class="btn btn-verde">AGENDA UNA REUNIÓN</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTRICAS -->
+<section id="metricas" class="fade-in">
+  <div class="inner">
+    <h2>¡TRANSFORMAMOS SUEÑOS EN LOGROS!</h2>
+    <div class="metricas-box">
+      <div class="metrica scale-in" style="transition-delay:0s">
+        <!-- Local con toldo: restaurantes servidos -->
+        <div class="metrica-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img">
+            <path d="M2.5 9.5 4 4.5h16l1.5 5H2.5Z"/>
+            <path d="M4.5 9.5V20h15V9.5"/>
+            <path d="M9.5 20v-6h5v6"/>
+          </svg>
+        </div>
+        <div class="metrica-num" data-target="60" data-suffix="+">60+</div>
+        <div class="metrica-label">Restaurantes Servidos</div>
+      </div>
+      <div class="metrica scale-in" style="transition-delay:0.15s">
+        <!-- Tablilla con cotejo: proyectos completados -->
+        <div class="metrica-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img">
+            <path d="M9 4.5H7.5A1.5 1.5 0 0 0 6 6v13a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19V6a1.5 1.5 0 0 0-1.5-1.5H15"/>
+            <rect x="9" y="2.5" width="6" height="3.5" rx="1"/>
+            <path d="m9.5 13 2 2 3.5-3.5"/>
+          </svg>
+        </div>
+        <div class="metrica-num" data-target="100" data-suffix="+">100+</div>
+        <div class="metrica-label">Proyectos Completados</div>
+      </div>
+      <div class="metrica scale-in" style="transition-delay:0.3s">
+        <!-- Bombilla: conceptos creados -->
+        <div class="metrica-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img">
+            <path d="M12 3a6 6 0 0 0-3.6 10.8c.65.5 1 1.25 1 2.05v.65h5.2v-.65c0-.8.35-1.55 1-2.05A6 6 0 0 0 12 3Z"/>
+            <path d="M9.4 19h5.2"/>
+            <path d="M10.3 21.5h3.4"/>
+          </svg>
+        </div>
+        <div class="metrica-num" data-target="15">15</div>
+        <div class="metrica-label">Conceptos Creados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER CTA
+     Movido aquí (antes iba entre Clientes y Promesa). Ahí quedaba dos secciones antes del
+     formulario y los dos llamados a la acción competían. Aquí atrapa a quien acaba de ver
+     las métricas, que es el momento de mayor convencimiento. -->
+<section id="banner-cta" class="fade-in">
+  <div class="inner">
+    <h2>CONTIGO DESDE LA IDEA, HASTA EL ÉXITO</h2>
+    <a href="#contacto" class="btn btn-amarillo">COMIENZA YA</a>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes" class="fade-in">
+  <div class="inner">
+    <span class="tag">NUESTROS CLIENTES</span>
+    <h2>QUEREMOS COLABORAR</h2>
+    <p>Nuestro compromiso con la excelencia se refleja en cada colaboración que emprendemos. Trabajamos estrechamente con nuestros socios para lograr resultados sobresalientes, transformando ideas en éxitos tangibles.</p>
+    <div class="logos-row">
+      <div class="logo-box">
+        <img src="images/logo-pocito-dulce.webp" alt="Café El Pocito Dulce">
+      </div>
+      <div class="logo-box">
+        <img src="images/logo-cafe-don-juan.webp" alt="Café Don Juan">
+      </div>
+      <div class="logo-box">
+        <img src="images/logo-koa-acai.webp" alt="Koa Açaí">
+      </div>
+      <div class="logo-box">
+        <img src="images/logo-alzai.webp" alt="Alzai Pizzería Napolitana">
+      </div>
+      <div class="logo-box">
+        <img src="images/logo-el-rancho-del-norte.webp" alt="El Rancho del Norte">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMESA -->
+<section id="promesa" class="fade-in">
+  <div class="inner">
+    <span class="tag">NUESTRA PROMESA</span>
+    <h2>CUMPLIMOS LO QUE PROMETEMOS</h2>
+    <p>Cada proyecto que emprendemos en FoodBranding está respaldado por un firme compromiso con la excelencia y la eficacia. Nos aseguramos de entregar resultados a tiempo y con la máxima profesionalidad.</p>
+
+    <!-- Tres columnas con icono: rompe la fila de bloques centrados iguales y saca las
+         píldoras azules, que parecían botones. -->
+    <div class="pilares">
+      <div class="pilar fade-in-stagger" style="transition-delay:0.05s">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.6 5.6 6.1.8-4.5 4.2 1.2 6.1L12 16.8 6.6 19.7l1.2-6.1-4.5-4.2 6.1-.8L12 3Z"/></svg>
+        <h4>Excelencia</h4>
+        <p>La excelencia no es el resultado del final, es cada paso del camino. Así trabajamos desde el principio.</p>
+      </div>
+      <div class="pilar fade-in-stagger" style="transition-delay:0.15s">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.3-7.5-9.6a4.3 4.3 0 0 1 7.5-2.9 4.3 4.3 0 0 1 7.5 2.9c0 5.3-7.5 9.6-7.5 9.6Z"/></svg>
+        <h4>Compromiso</h4>
+        <p>Nuestro compromiso es con la industria de alimentos y bebidas de Puerto Rico. Cada negocio que se sostiene, la levanta.</p>
+      </div>
+      <div class="pilar fade-in-stagger" style="transition-delay:0.25s">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
+        <h4>Prontitud</h4>
+        <p>Fechas claras desde el primer día y prioridades ordenadas: sabes qué se entrega, cuándo, y qué se atiende primero para que la operación no se detenga.</p>
+      </div>
+    </div>
+    <!-- Foto retirada (9 ago 2026): era una sesión de fotos con softbox, no comunicaba
+         la promesa de entrega puntual y profesional. La sección funciona mejor como
+         respiro limpio antes del formulario. Si vuelve una imagen aquí, que sea
+         horizontal y del momento de entrega: Deliani repasando el costeo con un cliente. -->
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="fade-in">
+  <div class="inner">
+    <span class="tag">CONTÁCTANOS</span>
+    <h2>QUEREMOS ESCUCHARTE</h2>
+    <p>Estamos preparados para servirte. ¡Comunícate hoy y comencemos a trabajar juntos en el éxito de tu negocio!</p>
+    <form class="contact-form" data-whatsapp="17875100010">
+      <!-- Cada campo lleva su <label> real, asociado por for/id. Va oculto a la vista
+           (.sr-only) para no cambiar el diseño, pero un lector de pantalla lo anuncia.
+           Antes solo había placeholder: los campos se leían sin nombre. 10 ago 2026. -->
+      <div class="form-row">
+        <div class="form-campo">
+          <label class="sr-only" for="fb-nombre">Nombre</label>
+          <input type="text" id="fb-nombre" name="nombre" placeholder="Nombre"
+                 autocomplete="given-name" required>
+        </div>
+        <div class="form-campo">
+          <label class="sr-only" for="fb-apellido">Apellido</label>
+          <input type="text" id="fb-apellido" name="apellido" placeholder="Apellido"
+                 autocomplete="family-name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-campo">
+          <label class="sr-only" for="fb-negocio">Nombre del Negocio</label>
+          <input type="text" id="fb-negocio" name="negocio" placeholder="Nombre del Negocio"
+                 autocomplete="organization">
+        </div>
+        <div class="form-campo">
+          <label class="sr-only" for="fb-telefono">Teléfono</label>
+          <input type="tel" id="fb-telefono" name="telefono" placeholder="Teléfono"
+                 autocomplete="tel">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-campo">
+          <label class="sr-only" for="fb-email">Correo Electrónico</label>
+          <input type="email" id="fb-email" name="email" placeholder="Correo Electrónico"
+                 autocomplete="email" required>
+        </div>
+        <div class="form-campo">
+          <label class="sr-only" for="fb-metodo">Método de Contacto</label>
+          <select id="fb-metodo" name="metodo_contacto">
+            <option value="">Método de Contacto</option>
+            <option value="llamada">Llamada</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+      </div>
+      <label class="sr-only" for="fb-mensaje">Mensaje</label>
+      <textarea id="fb-mensaje" name="mensaje" placeholder="Mensaje"></textarea>
+      <div class="form-submit">
+        <button type="submit" class="btn btn-amarillo">ENVIAR</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="fade-in">
+  <div class="inner">
+    <div class="footer-redes">
+      <a href="https://www.instagram.com/foodbrandingpr/" target="_blank" rel="noopener" aria-label="FoodBranding en Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/foodbrandingpr/" target="_blank" rel="noopener" aria-label="FoodBranding en Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M13.4 21v-8.2h2.8l.42-3.2H13.4V7.53c0-.93.26-1.56 1.59-1.56h1.7V3.11A22.7 22.7 0 0 0 14.2 3c-2.46 0-4.14 1.5-4.14 4.25V9.6H7.25v3.2h2.81V21h3.34Z"/></svg>
+      </a>
+    </div>
+    <p>&copy; 2026 FoodBranding PR. Todos los derechos reservados.</p>
+    <p class="footer-cita">Job 42:2</p>
+  </div>
+</footer>
+
+<script>
+function openMenu() {
+  document.getElementById('sidePanel').classList.add('open');
+  document.getElementById('sideOverlay').classList.add('active');
+  document.body.classList.add('menu-open');
+}
+function closeMenu() {
+  document.getElementById('sidePanel').classList.remove('open');
+  document.getElementById('sideOverlay').classList.remove('active');
+  document.body.classList.remove('menu-open');
+}
+// Cerrar con Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMenu();
+});
+
+// Smooth scroll para todos los anchor links
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    closeMenu();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (nav) nav.style.boxShadow = window.scrollY > 40 ? '0 2px 20px rgba(0,0,0,0.5)' : 'none';
+});
+
+// === PROGRESS BAR ===
+(function(){
+  var bar = document.getElementById('fb-progress-bar');
+  // Mover la barra al <html>: nunca afectada por transform del body
+  if(bar && bar.parentNode !== document.documentElement) {
+    document.documentElement.appendChild(bar);
+  }
+  function updateBar(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(!bar || h <= 0) return;
+    bar.style.width = (window.scrollY / h * 100) + '%';
+  }
+  // Calcular en scroll (principal)
+  window.addEventListener('scroll', updateBar, { passive: true });
+  // Recalcular cuando todo termine de cargar (fuentes, imgs, animaciones)
+  window.addEventListener('load', updateBar);
+  // Fallback extra: esperar 300ms por si los fade-in expanden el DOM
+  setTimeout(updateBar, 300);
+  // Calcular inmediatamente
+  updateBar();
+})();
+
+// === DARK/LIGHT TOGGLE ===
+(function(){
+  var btn = document.getElementById('fbThemeToggle');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('fb-theme', next);
+  });
+})();
+
+// === ANIMACIONES SCROLL ===
+(function() {
+  var selectors = '.fade-in, .fade-in-stagger, .fade-left, .fade-right, .scale-in';
+  var els = document.querySelectorAll(selectors);
+  if (!els.length) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+// === COUNTER ANIMADO ===
+(function() {
+  var counters = document.querySelectorAll('[data-target]');
+  if (!counters.length) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1400;
+      var start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+  counters.forEach(function(el) { io.observe(el); });
+})();
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

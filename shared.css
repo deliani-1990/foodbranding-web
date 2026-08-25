@@ -1,0 +1,1131 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@700;900&family=Manrope:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 80px; }
+
+:root {
+  --negro: #17161a;
+  --verde: #367C24;          /* Enfoque — color primario de marca */
+  --verde-oscuro: #2A6119;   /* fondos de banda en light mode */
+  --amarillo: #F6AE2D;
+  --azul: #04A3E8;
+  --azul-oscuro: #2F4858;
+  --naranja: #F26419;
+  /* Visión en version legible como texto: el #F26419 solo da 2.9:1 sobre gris claro */
+  --naranja-texto: #B3470E;
+  --gris-claro: #f6f6f6;
+  --blanco: #FFFFFF;
+  --negro-texto: #000000;
+  --gris-texto: #707070;
+}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] {
+  --negro: #0a0a0e;
+  --gris-claro: #1a1a22;
+  --blanco: #121218;
+  --negro-texto: #e8eaf0;
+  --gris-texto: #a0a8b8;
+  --verde: #5CB33F;          /* verde aclarado: 7.2:1 sobre fondo oscuro */
+  --verde-oscuro: #12290B;   /* fondo de banda en dark mode */
+  --naranja-texto: #f9a05c;  /* Visión aclarado para fondos oscuros */
+}
+[data-theme="dark"] body { background: #0d0d14; color: #e8eaf0; }
+[data-theme="dark"] #servicios { background: var(--verde-oscuro); }
+[data-theme="dark"] #servicios h2 { color: #e8eaf0; }
+[data-theme="dark"] #servicios p { color: #b8d9ab; }
+[data-theme="dark"] #valores { background: #0d0d14; }
+[data-theme="dark"] .valores-left { background: #1a1a22; }
+[data-theme="dark"] .valores-left p { color: #e8eaf0; }
+[data-theme="dark"] .valores-right h2 { color: #e8eaf0; }
+[data-theme="dark"] .valores-right > p { color: #a0a8b8; }
+[data-theme="dark"] .valor-item h4 { color: #e8eaf0; }
+[data-theme="dark"] .valor-item p { color: #a0a8b8; }
+[data-theme="dark"] .metricas-box { background: #1a1a22; }
+[data-theme="dark"] .metrica-num { color: #e8eaf0; }
+[data-theme="dark"] .metrica-label { color: #a0a8b8; }
+[data-theme="dark"] #clientes { background: #0d0d14; }
+[data-theme="dark"] #clientes h2 { color: #e8eaf0; }
+[data-theme="dark"] #clientes > .inner > p { color: #a0a8b8; }
+[data-theme="dark"] .logo-placeholder { color: #888; }
+[data-theme="dark"] #banner-cta { background: var(--verde-oscuro); }
+[data-theme="dark"] #banner-cta h2 { color: #d6eccd; }
+[data-theme="dark"] #promesa { background: #1a1a22; }
+[data-theme="dark"] #promesa h2 { color: #e8eaf0; }
+[data-theme="dark"] #promesa > .inner > p { color: #a0a8b8; }
+[data-theme="dark"] .sub-main { background: #0d0d14; }
+[data-theme="dark"] .sub-right h2 { color: #e8eaf0; }
+[data-theme="dark"] .sub-right p { color: #a0a8b8; }
+[data-theme="dark"] .sub-placeholder { background: #1a1a22; color: #666; }
+[data-theme="dark"] .casos { background: #1a1a22; }
+[data-theme="dark"] .caso-card { background: #0d0d14; }
+[data-theme="dark"] .caso-body h4 { color: #e8eaf0; }
+[data-theme="dark"] .caso-body p { color: #a0a8b8; }
+[data-theme="dark"] .check-list li { color: #e8eaf0; }
+[data-theme="dark"] .paso-text h4 { color: #e8eaf0; }
+[data-theme="dark"] .paso-text p { color: #a0a8b8; }
+[data-theme="dark"] footer { background: #06060a; }
+[data-theme="dark"] footer p { color: #a0a8b8; }
+
+/* Dark mode: fixes para elementos con color:var(--blanco) usado como texto sobre fondos oscuros */
+[data-theme="dark"] .hero h1 { color: #e8eaf0; }
+[data-theme="dark"] .btn-outline-blanco { color: #e8eaf0; border-color: rgba(232,234,240,0.75); }
+[data-theme="dark"] .hamburger span { background: #e8eaf0; }
+[data-theme="dark"] .servicio-card span { color: #e8eaf0; }
+[data-theme="dark"] #metricas h2 { color: #e8eaf0; }
+[data-theme="dark"] .por-que .sub-right h2,
+[data-theme="dark"] .por-que .sub-right h3 { color: #e8eaf0; }
+[data-theme="dark"] #contacto h2 { color: #e8eaf0; }
+[data-theme="dark"] #contacto > .inner > p { color: rgba(232,234,240,0.9); }
+
+/* ── PROGRESS BAR ── */
+#fb-progress-bar {
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+  height: 3px;
+  width: 0%;
+  /* Verde → Amarillo → Naranja → Azul: paleta completa de FoodBranding */
+  background: linear-gradient(
+    90deg,
+    #367C24 0%,
+    #F6AE2D 40%,
+    #F26419 70%,
+    #04A3E8 100%
+  );
+  z-index: 9999;
+  transition: width .1s linear;
+  border-radius: 0 2px 2px 0;
+  pointer-events: none;
+  transform: none !important;
+  will-change: width;
+}
+
+/* ── THEME TOGGLE BUTTON ── */
+.fb-theme-toggle {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .2s, border-color .2s, transform .2s;
+  flex-shrink: 0; padding: 0;
+}
+.fb-theme-toggle:hover {
+  background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4);
+  transform: rotate(20deg);
+}
+.fb-theme-toggle svg { width: 17px; height: 17px; fill: rgba(255,255,255,0.8); }
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+body { font-family: 'Manrope', sans-serif; font-weight: 400; color: var(--negro-texto); }
+
+/* ── NAV ── */
+nav#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(23,22,26,0.97);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px;
+  padding: 0 20px; height: 68px;
+  transition: transform .35s ease;
+  overflow: clip; /* clip en vez de hidden: no crea stacking context nuevo */
+}
+body.menu-open nav#mainNav { transform: translateX(-320px); }
+
+/* Logo: shrink first, maintain aspect ratio */
+.nav-logo {
+  flex-shrink: 1; min-width: 0;
+  display: flex; align-items: center;
+}
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* Nav right side: toggle + hamburger */
+.nav-actions {
+  display: flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Hamburger siempre visible */
+.hamburger {
+  display: flex; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 8px;
+  flex-shrink: 0;
+}
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--blanco); transition: .3s; }
+.hamburger:hover span { background: var(--amarillo); }
+
+/* ── SIDE PANEL ── */
+.side-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(0,0,0,0.4);
+}
+.side-overlay.active { display: block; }
+
+.side-panel {
+  position: fixed; top: 0; right: -320px; width: 320px; height: 100vh;
+  background: var(--azul); z-index: 1200;
+  display: flex; flex-direction: column;
+  transition: right .35s ease;
+  overflow-y: auto;
+}
+.side-panel.open { right: 0; }
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Mover todo el body cuando abre — excluir barra de progreso */
+body.menu-open > *:not(.side-panel):not(.side-overlay):not(#fb-progress-bar) {
+  transform: translateX(-320px);
+  transition: transform .35s ease;
+}
+body:not(.menu-open) > *:not(.side-panel):not(.side-overlay):not(#fb-progress-bar) {
+  transform: translateX(0);
+  transition: transform .35s ease;
+}
+
+.side-top {
+  background: rgba(0,0,0,0.2);
+  padding: 14px 24px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.side-top span {
+  font-family: 'Manrope', sans-serif; font-size: 0.85rem;
+  color: var(--blanco); display: flex; align-items: center; gap: 8px;
+}
+
+.side-close {
+  position: absolute; top: 16px; right: 20px;
+  background: none; border: none; color: var(--blanco);
+  font-size: 1.4rem; cursor: pointer; line-height: 1;
+  transition: opacity .2s;
+}
+.side-close:hover { opacity: .7; }
+
+.side-nav {
+  display: flex; flex-direction: column;
+  padding: 40px 0 24px;
+}
+.side-nav a {
+  font-family: 'Manrope', sans-serif; font-weight: 500;
+  font-size: 1rem; color: var(--blanco);
+  text-decoration: none; padding: 14px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; gap: 10px;
+  transition: background .2s;
+}
+.side-nav a::before { content: '•'; font-size: 0.7rem; opacity: .7; }
+.side-nav a:hover { background: rgba(0,0,0,0.15); }
+
+/* ── UTILITIES ── */
+.inner { max-width: 1170px; margin: auto; padding: 0 20px; }
+.tag {
+  display: inline-block; font-family: 'Manrope', sans-serif; font-weight: 600;
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--naranja-texto); margin-bottom: 12px;
+}
+/* El naranja no se lee sobre verde (1.6:1) — dentro de la banda verde el tag va en blanco */
+#servicios .tag { color: #FFFFFF; }
+/* #contacto es azul pizarra en ambos temas: necesita el naranja aclarado, no el oscuro */
+#contacto .tag { color: #f9a05c; }
+.btn {
+  display: inline-block; font-family: 'Overpass', sans-serif; font-weight: 700;
+  font-size: 0.85rem; text-transform: uppercase; letter-spacing: .06em;
+  padding: 14px 32px; cursor: pointer; text-decoration: none; border: none;
+  transition: opacity .2s;
+}
+.btn:hover { opacity: .85; }
+/* Botón primario de marca — verde Enfoque, texto blanco (5.2:1, pasa AA) */
+.btn-verde {
+  background: var(--verde); color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(54,124,36,0.35);
+}
+.btn-verde:hover {
+  box-shadow: 0 6px 20px rgba(54,124,36,0.5);
+  opacity: 1; transform: translateY(-1px);
+}
+/* En dark mode el verde se aclara, así que el texto pasa a oscuro para no perder contraste */
+[data-theme="dark"] .btn-verde { color: #0d1f07; }
+
+/* Botón secundario — amarillo Integridad */
+.btn-amarillo {
+  background: var(--amarillo); color: #000000;
+  box-shadow: 0 4px 14px rgba(246,174,45,0.35);
+}
+.btn-amarillo:hover {
+  box-shadow: 0 6px 20px rgba(246,174,45,0.5);
+  opacity: 1; transform: translateY(-1px);
+}
+/* Sobre banda verde el amarillo solo da 2.7:1 de contraste de borde — se define con filo blanco */
+#servicios .btn-amarillo,
+#banner-cta .btn-amarillo { border: 2px solid #FFFFFF; }
+.btn-azul {
+  background: var(--azul); color: var(--blanco);
+  box-shadow: 0 4px 14px rgba(4,163,232,0.3);
+}
+.btn-azul:hover {
+  box-shadow: 0 6px 20px rgba(4,163,232,0.45);
+  opacity: 1; transform: translateY(-1px);
+}
+.btn-outline-blanco {
+  background: transparent; color: var(--blanco);
+  border: 2px solid var(--blanco);
+}
+.btn-outline-blanco:hover {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 4px 20px rgba(255,255,255,0.15);
+  opacity: 1;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: var(--negro);
+  background-image: url('https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=1600&q=80');
+  background-size: cover; background-position: center;
+  position: relative; text-align: center; padding: 100px 20px 60px;
+  /* Sombra interna abajo para transición suave al siguiente bloque */
+  box-shadow: inset 0 -60px 80px -20px rgba(0,0,0,0.6);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+/* ── HERO DEL HOME ──
+   La foto es Deliani trabajando en cocina: ella está a la derecha y el lado izquierdo
+   es cocina desenfocada. Un velo plano oscurecería su cara, así que en vez de eso se usa
+   un degradado horizontal: fuerte a la izquierda (donde va el texto) y casi nulo sobre ella.
+   La foto trae la pared en penumbra a la izquierda ya reservada para el texto: medido,
+   ahí la luminancia media es 0.086 y el percentil 95 es 0.233, así que basta un velo
+   suave. Al 62% el peor píxel de la zona da 5.1:1 y el p95 da 7.6:1 — de sobra para AA,
+   y el comedor conserva su luz cálida en vez de quedar apagado. */
+.hero--home { justify-content: flex-start; text-align: left; padding-left: 6vw; }
+.hero--home::before {
+  background: linear-gradient(100deg,
+    rgba(0,0,0,0.70) 0%,
+    rgba(0,0,0,0.62) 32%,
+    rgba(0,0,0,0.40) 52%,
+    rgba(0,0,0,0.22) 72%,
+    rgba(0,0,0,0.12) 100%);
+}
+.hero--home .hero-content { max-width: 620px; }
+.hero--home .hero-sub { margin-left: 0; margin-right: 0; }
+
+/* En pantallas angostas el corte horizontal no funciona: la foto se recorta al centro,
+   así que el texto vuelve al centro y el velo pasa a plano. */
+@media (max-width: 860px) {
+  .hero--home { justify-content: center; text-align: center; padding-left: 20px; }
+  .hero--home::before { background: rgba(0,0,0,0.72); }
+  .hero--home .hero-content { max-width: 900px; }
+  .hero--home .hero-sub { margin-left: auto; margin-right: auto; }
+}
+.hero h1 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  color: var(--blanco); font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.2; margin-bottom: 36px;
+}
+.hero .btn { margin-top: 8px; }
+.hero-sub {
+  font-family: 'Manrope', sans-serif; font-weight: 400;
+  color: rgba(255,255,255,0.92); font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.6; max-width: 640px; margin: 0 auto 32px;
+  opacity: 0; transform: translateY(24px);
+  animation: heroTitleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
+}
+
+/* ── SERVICIOS ── */
+#servicios {
+  background: var(--verde); padding: 80px 0; text-align: center;
+  /* Sombras internas top/bottom: separa la sección amarilla del fondo oscuro */
+  box-shadow: inset 0 8px 24px -8px rgba(0,0,0,0.25),
+              inset 0 -8px 24px -8px rgba(0,0,0,0.25);
+}
+#servicios h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.6rem, 3vw, 2.4rem); color: #FFFFFF; margin-bottom: 16px;
+}
+#servicios p {
+  font-family: 'Manrope', sans-serif; color: rgba(255,255,255,0.92);
+  max-width: 700px; margin: 0 auto 40px; line-height: 1.7;
+}
+/* Servicio principal destacado */
+.servicio-featured {
+  display: block; text-decoration: none; text-align: left;
+  border-radius: 4px; overflow: hidden; position: relative;
+  min-height: 300px; margin: 0 auto 44px; max-width: 900px;
+  display: flex; align-items: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.servicio-featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.5);
+}
+.servicio-featured-body { padding: 44px 48px; max-width: 560px; }
+.servicio-featured-tag {
+  display: inline-block; font-family: 'Manrope', sans-serif; font-weight: 600;
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: .12em;
+  color: #000000; background: var(--amarillo);
+  padding: 6px 14px; border-radius: 2px; margin-bottom: 16px;
+}
+.servicio-featured h3 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  color: #fff; font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.15; margin-bottom: 14px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+.servicio-featured-body p {
+  font-family: 'Manrope', sans-serif; color: rgba(255,255,255,0.95);
+  font-size: 0.98rem; line-height: 1.65; margin: 0 auto 20px; max-width: none;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+}
+.servicio-featured-cta {
+  font-family: 'Overpass', sans-serif; font-weight: 700; text-transform: uppercase;
+  font-size: 0.82rem; letter-spacing: .06em; color: var(--amarillo);
+  border-bottom: 2px solid var(--amarillo); padding-bottom: 3px;
+}
+.servicios-sub-label {
+  display: block; font-family: 'Overpass', sans-serif; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  font-size: 0.95rem; color: #FFFFFF; margin-bottom: 6px;
+}
+.servicios-sub-desc {
+  font-family: 'Manrope', sans-serif; color: rgba(255,255,255,0.96);
+  font-size: 0.9rem; margin: 0 auto 24px !important; max-width: 560px;
+}
+[data-theme="dark"] .servicios-sub-label { color: #e8eaf0; }
+[data-theme="dark"] .servicios-sub-desc { color: #c8a860; }
+
+.servicios-grid {
+  display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center;
+}
+.servicio-card {
+  flex: 1 1 180px; max-width: 220px; height: 200px;
+  background: var(--negro); display: flex; align-items: flex-end;
+  justify-content: center; padding: 0 12px 20px; text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+.servicio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+.servicio-card span {
+  font-family: 'Overpass', sans-serif; font-weight: 700; text-transform: uppercase;
+  color: var(--blanco); font-size: 0.82rem; text-align: center; letter-spacing: .04em;
+  position: relative; z-index: 1;
+}
+
+/* ── VALORES ── */
+#valores { background: var(--blanco); padding: 80px 0; }
+.valores-inner { display: grid; grid-template-columns: 40% 60%; gap: 60px; align-items: center; }
+.valores-left {
+  background: var(--gris-claro); padding: 40px 32px;
+  display: flex; align-items: center; gap: 24px;
+}
+.linea-acento { width: 4px; height: 220px; background: var(--verde); flex-shrink: 0; }
+.valores-left p { font-family: 'Manrope', sans-serif; font-size: 1.05rem; line-height: 1.6; }
+.valores-right h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 16px;
+}
+.valores-right > p { color: var(--gris-texto); line-height: 1.7; margin-bottom: 28px; }
+.valor-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; }
+.valor-icon { color: var(--verde); font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.valor-item h4 { font-family: 'Overpass', sans-serif; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; }
+.valor-item p { font-family: 'Manrope', sans-serif; color: var(--gris-texto); font-size: 0.9rem; margin-top: 2px; }
+
+/* ── MÉTRICAS ── */
+#metricas { background: var(--negro); padding: 80px 0; text-align: center;
+  box-shadow: inset 0 8px 24px -8px rgba(0,0,0,0.3);
+}
+#metricas h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  color: var(--blanco); font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 40px;
+}
+.metricas-box {
+  background: var(--blanco); max-width: 700px; margin: auto;
+  padding: 48px 40px; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+}
+.metrica { text-align: center; }
+.metrica-icon {
+  color: var(--verde); margin-bottom: 12px;
+  display: flex; justify-content: center; line-height: 0;
+}
+.metrica-icon svg {
+  width: 36px; height: 36px; display: block;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+}
+.metrica:hover .metrica-icon svg { transform: translateY(-2px); }
+.metrica-icon svg { transition: transform .25s ease; }
+.metrica-num {
+  font-family: 'Overpass', sans-serif; font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem); color: var(--negro-texto);
+}
+.metrica-label { font-family: 'Manrope', sans-serif; color: var(--gris-texto); font-size: 0.88rem; margin-top: 4px; }
+
+/* ── CLIENTES ── */
+#clientes { background: var(--blanco); padding: 80px 0; text-align: center; }
+#clientes h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 16px;
+}
+#clientes > .inner > p { color: var(--gris-texto); max-width: 700px; margin: 0 auto 40px; line-height: 1.7; }
+.logos-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px; flex-wrap: wrap;
+}
+.logo-placeholder { font-family: 'Manrope', sans-serif; color: #555; font-size: 1.1rem; }
+
+/* Logos de clientes en tarjeta blanca (legibles en claro y oscuro) */
+.logo-box {
+  display: flex; align-items: center; justify-content: center;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 18px 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.logo-box:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+.logo-box svg { width: 96px; height: 64px; }
+.logo-box img { width: 132px; height: 78px; object-fit: contain; display: block; }
+[data-theme="dark"] .logo-box {
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.4);
+}
+
+/* ── BANNER CTA ── */
+#banner-cta {
+  background: var(--verde); padding: 60px 0; text-align: center;
+  box-shadow: inset 0 8px 24px -8px rgba(0,0,0,0.25),
+              inset 0 -8px 24px -8px rgba(0,0,0,0.25);
+}
+#banner-cta h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.4rem); margin-bottom: 28px; color: #FFFFFF;
+}
+
+/* ── PROMESA ── */
+#promesa { background: var(--gris-claro); padding: 80px 0; text-align: center; }
+#promesa h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 16px;
+}
+#promesa > .inner > p { color: var(--gris-texto); max-width: 700px; margin: 0 auto 32px; line-height: 1.7; }
+.pills { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+.pills:last-child { margin-bottom: 0; }
+
+/* ── PILARES DE LA PROMESA ──
+   Sustituyen a las píldoras azules, que parecían botones. Tres columnas con icono
+   rompen la fila de secciones centradas idénticas del final de la página. */
+.pilares {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 36px; max-width: 940px; margin: 48px auto 0; text-align: center;
+}
+.pilar svg {
+  width: 40px; height: 40px; margin: 0 auto 14px; display: block;
+  stroke: var(--verde); fill: none;
+  stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform .25s ease;
+}
+.pilar:hover svg { transform: translateY(-3px); }
+.pilar h4 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .03em; margin-bottom: 8px;
+}
+[data-theme="dark"] .pilar h4 { color: #e8eaf0; }
+.pilar p {
+  font-family: 'Manrope', sans-serif; color: var(--gris-texto);
+  font-size: 0.9rem; line-height: 1.6; margin: 0 auto; max-width: 260px;
+}
+[data-theme="dark"] .pilar p { color: #a0a8b8; }
+@media (max-width: 800px) {
+  .pilares { grid-template-columns: 1fr; gap: 30px; margin-top: 36px; }
+}
+.pill {
+  background: var(--azul); color: var(--blanco);
+  font-family: 'Manrope', sans-serif; font-weight: 600;
+  padding: 10px 24px; font-size: 0.9rem;
+}
+.img-placeholder {
+  background: #e3e3e3; height: 400px; max-width: 500px;
+  margin: auto; display: flex; align-items: center; justify-content: center;
+  color: #aaa; font-family: 'Manrope', sans-serif;
+}
+
+/* ── CONTACTO ── */
+#contacto { background: var(--azul-oscuro); padding: 80px 0; text-align: center; }
+#contacto h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  color: var(--blanco); font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 16px;
+}
+#contacto > .inner > p { color: var(--blanco); max-width: 700px; margin: 0 auto 40px; line-height: 1.7; }
+.contact-form { max-width: 700px; margin: auto; text-align: left; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+/* Cada campo va envuelto en .form-campo junto a su <label>, así que el hijo del grid
+   pasa a ser el div, no el input. El input sigue ocupando el ancho completo. */
+.form-campo { display: block; min-width: 0; }
+
+/* Etiqueta visible solo para lectores de pantalla. No usar display:none ni
+   visibility:hidden — eso también la esconde del lector, que es justo lo que
+   queremos evitar. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+  border: 0;
+}
+/* Al navegar con teclado, el foco tiene que verse: sin esto el usuario que tabula
+   no sabe en qué campo está. Con outline-offset el filo cae sobre el azul pizarra de
+   la sección, no sobre el campo: amarillo de marca contra #2F4858 da 5.03:1. */
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: 3px solid var(--amarillo); outline-offset: 2px;
+}
+/* El texto de los campos va en azul marino FIJO, no en var(--blanco).
+   Dos razones, medidas el 10 ago 2026:
+   1. `var(--blanco)` se invierte en modo oscuro (#FFFFFF → #121218), así que el
+      texto cambiaba de color entre temas sobre un fondo que NO cambia. Ese era el bug
+      visible en el select «Método de Contacto».
+   2. Blanco sobre el azul de marca #04A3E8 da 2.83:1 — no pasa el 4.5:1 de la regla del
+      sitio, ni en claro ni en oscuro. Nunca pasó. #14232C da 5.67:1 y sí pasa.
+   El fondo del campo se queda en el azul de marca: contra el azul pizarra de la sección
+   da 3.39:1, sobre el 3:1 que pide un límite gráfico. */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%; background: var(--azul); border: none; padding: 14px 16px;
+  color: #14232C; font-family: 'Manrope', sans-serif; font-size: 0.95rem;
+  outline: none;
+}
+/* Los placeholders son la única etiqueta que tienen estos campos, así que van a
+   opacidad completa: son texto de verdad, no una pista decorativa. */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: #14232C; opacity: 1; }
+.contact-form select { color: #14232C; }
+.contact-form select option { color: var(--negro-texto); background: var(--blanco); }
+.contact-form textarea { width: 100%; height: 130px; resize: vertical; margin-bottom: 16px; display: block; }
+.form-submit { text-align: right; }
+/* Mensaje de confirmación después de enviar. Vive sobre el azul pizarra de
+   #contacto, así que se mide contra ese fondo: blanco da 9.6:1 y el amarillo
+   de marca 5.0:1. Vacío no ocupa espacio. */
+.form-estado {
+  font-family: 'Manrope', sans-serif; font-size: 0.9rem; line-height: 1.5;
+  margin-top: 14px; text-align: right; min-height: 0;
+}
+.form-estado:empty { display: none; }
+.form-estado--ok { color: #FFFFFF; font-weight: 600; }
+.form-estado--aviso { color: var(--amarillo); font-weight: 600; }
+
+/* ── FOOTER ── */
+footer { background: var(--negro); padding: 26px 0 22px; text-align: center; }
+footer p { font-family: 'Manrope', sans-serif; color: #9a9a9a; font-size: 0.82rem; }
+/* #777 sobre el negro daba 4.2:1 y no pasaba el 4.5:1. #9a9a9a da 6.5:1. */
+.footer-cita {
+  font-family: 'Overpass', sans-serif; font-weight: 700; letter-spacing: .08em;
+  font-size: 0.72rem; color: #8a8a8a; margin-top: 6px;
+}
+.footer-redes { display: flex; gap: 18px; justify-content: center; margin-bottom: 14px; }
+.footer-redes a {
+  display: inline-flex; width: 34px; height: 34px; border-radius: 50%;
+  align-items: center; justify-content: center; color: #9a9a9a;
+  transition: color .2s ease, background .2s ease;
+}
+.footer-redes a:hover { color: #FFFFFF; background: rgba(255,255,255,0.10); }
+.footer-redes a:focus-visible { outline: 3px solid var(--amarillo); outline-offset: 2px; }
+.footer-redes svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+
+/* ── SUBPAGE SECTIONS ── */
+.sub-main { padding: 80px 0; }
+.sub-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+/* En Creación & Desarrollo la columna de los 6 pasos pasa de 360px, así que la foto
+   se estira para que ambas columnas terminen a la par en vez de dejar hueco al lado.
+   Si el navegador no soporta :has(), se queda con el comportamiento anterior. */
+.sub-two-col:has(.pasos-grid) { align-items: stretch; }
+.sub-two-col:has(.pasos-grid) .sub-placeholder { height: auto; min-height: 360px; }
+
+.sub-placeholder {
+  background: var(--gris-claro); height: 360px;
+  display: flex; align-items: center; justify-content: center;
+  color: #aaa; font-family: 'Manrope', sans-serif;
+  /* Sombra: cuando lleguen las fotos reales se verá con profundidad */
+  box-shadow: 0 6px 28px rgba(0,0,0,0.18);
+}
+.sub-right h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.3rem, 2.5vw, 2rem); margin-bottom: 16px;
+}
+.sub-right p { color: var(--gris-texto); line-height: 1.7; margin-bottom: 24px; }
+.check-list { list-style: none; margin-bottom: 28px; }
+.check-list li {
+  /* baseline en vez de flex-start: el checkmark se alinea con la línea de texto.
+     Con flex-start su caja (más alta) empujaba el glifo por debajo de la palabra.
+     Baseline también funciona en items de 2 líneas: se ancla a la primera. */
+  display: flex; gap: 12px; align-items: baseline;
+  font-family: 'Overpass', sans-serif; font-weight: 700; font-size: 0.92rem;
+  line-height: 1.45; text-transform: uppercase; margin-bottom: 12px;
+}
+.check-list li .ci {
+  color: var(--verde); font-size: 1rem; line-height: inherit; flex-shrink: 0;
+}
+
+/* Verde: separa esta seccion del #contacto azul pizarra que va inmediatamente despues */
+.por-que {
+  background: var(--verde); padding: 80px 0;
+  box-shadow: inset 0 8px 24px -8px rgba(0,0,0,0.3);
+}
+[data-theme="dark"] .por-que { background: var(--verde-oscuro); }
+/* El naranja no se lee sobre verde — el kicker va en blanco */
+.por-que .tag { color: #FFFFFF; }
+.por-que .sub-right h2 { color: var(--blanco); }
+.por-que .sub-right p { color: rgba(255,255,255,0.94); }
+.por-que .sub-right h3 {
+  font-family: 'Overpass', sans-serif; font-weight: 700; text-transform: uppercase;
+  color: var(--blanco); font-size: 1rem; margin: 20px 0 10px;
+}
+.otros-links { list-style: none; }
+.otros-links li { margin-bottom: 8px; }
+.otros-links a {
+  font-family: 'Manrope', sans-serif; color: rgba(255,255,255,0.94);
+  text-decoration: none; font-size: 0.95rem;
+  transition: color .2s;
+}
+/* Sobre verde el amarillo solo da 2.7:1 — el hover se marca con blanco puro + subrayado */
+.otros-links a:hover { color: #FFFFFF; text-decoration: underline; text-underline-offset: 3px; }
+
+.pasos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 0; }
+/* En Costeo los pasos van dentro de una sección .tipos a todo el ancho, y ahí el orden
+   se lee por columna: 01-02-03 a la izquierda y 04-05-06 a la derecha. Con el flujo
+   por fila que trae el grid por defecto quedaban 01-02 / 03-04 / 05-06, que obliga a
+   zigzaguear. En Creación & Desarrollo la lista vive en una columna estrecha al lado
+   de la foto, así que allá se queda el flujo por fila. */
+.tipos .pasos-grid { grid-auto-flow: column; grid-template-rows: repeat(3, auto); }
+
+/* ── MENTORÍA TRANSVERSAL ──
+   La mentoría no es un paso más: atraviesa los 6. El filo verde a la izquierda y el
+   corchete superior la amarran visualmente a toda la lista de pasos, no al último. */
+.acompanamiento {
+  position: relative;
+  border-left: 4px solid var(--verde);
+  background: rgba(54,124,36,0.06);
+  padding: 24px 26px 22px;
+  margin: 4px 0 32px;
+}
+[data-theme="dark"] .acompanamiento { background: rgba(92,179,63,0.10); }
+.acompanamiento::before {
+  content: ''; position: absolute; left: -4px; top: -14px;
+  width: 4px; height: 14px; background: var(--verde);
+  opacity: .35;
+}
+.acompanamiento h4 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .02em; color: var(--verde); margin-bottom: 8px;
+}
+.acompanamiento p {
+  font-family: 'Manrope', sans-serif; color: var(--gris-texto);
+  font-size: 0.9rem; line-height: 1.65; margin-bottom: 16px;
+}
+.acompanamiento .check-list { margin-bottom: 0; }
+.acompanamiento .check-list li { font-size: 0.85rem; margin-bottom: 9px; }
+.acompanamiento .check-list li:last-child { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .acompanamiento { padding: 20px 18px 18px; }
+}
+
+/* ── Variante ancha: el bloque va DEBAJO de las dos columnas, a todo el ancho ──
+   Así el lado derecho no carga con los pasos + la mentoría frente a una sola foto.
+   El filo verde pasa de la izquierda al borde superior: cruzando todo el ancho
+   recoge las 6 etapas de arriba mejor que el corchete lateral. */
+.acompanamiento--ancho {
+  border-left: none;
+  border-top: 4px solid var(--verde);
+  margin: 48px 0 0;
+  padding: 30px 34px 28px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px 48px;
+  align-items: start;
+}
+.acompanamiento--ancho::before { display: none; }
+.acompanamiento--ancho h4 { font-size: 1.05rem; margin-bottom: 10px; }
+/* En la variante ancha el párrafo va dentro de un div, así que no sirve el selector `> p` */
+.acompanamiento--ancho p { margin-bottom: 0; font-size: 0.93rem; }
+/* Los 4 puntos en 2x2 para que el bloque quede alargado y no alto.
+   align-self: center los baja al centro del bloque: pegados arriba dejaban
+   todo el espacio vacío debajo. */
+.acompanamiento--ancho .check-list {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px;
+  align-self: center;
+}
+.acompanamiento--ancho .check-list li { margin-bottom: 0; }
+
+/* Dentro de una sección .tipos el fondo ya es gris: el tinte verde encima del gris
+   bajaba el texto a 4.25:1 en modo claro. Se apoya sobre blanco (u oscuro) para
+   volver a 4.57:1 claro / 6.83:1 oscuro. Medido el 10 ago 2026. */
+.tipos .acompanamiento { background: var(--blanco); }
+[data-theme="dark"] .tipos .acompanamiento { background: var(--blanco); }
+.tipos .acompanamiento::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: rgba(54,124,36,0.06);
+}
+[data-theme="dark"] .tipos .acompanamiento::after { background: rgba(92,179,63,0.10); }
+.tipos .acompanamiento > * { position: relative; z-index: 1; }
+
+/* CTA de cierre a todo el ancho, debajo del bloque */
+.sub-cta-ancho { margin-top: 36px; text-align: center; }
+
+@media (max-width: 860px) {
+  .acompanamiento--ancho {
+    grid-template-columns: 1fr; gap: 18px;
+    padding: 26px 22px 24px; margin-top: 36px;
+  }
+  .acompanamiento--ancho .check-list { grid-template-columns: 1fr; }
+  .sub-cta-ancho { margin-top: 28px; }
+}
+.paso { display: flex; gap: 16px; align-items: flex-start; }
+.paso-num {
+  font-family: 'Overpass', sans-serif; font-weight: 900;
+  font-size: 2rem; color: var(--verde); flex-shrink: 0; line-height: 1;
+}
+.paso-text h4 { font-family: 'Overpass', sans-serif; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; margin-bottom: 4px; }
+.paso-text p { color: var(--gris-texto); font-size: 0.9rem; line-height: 1.6; }
+
+/* ── TIPOS DE MENÚ (pagina Diseño de Menús) ──
+   Filas alternadas: foto a un lado, texto al otro. Se intercala con gris claro para
+   no fundirse con la seccion blanca de arriba ni con la banda verde de abajo. */
+.tipos { background: var(--gris-claro); padding: 80px 0; }
+[data-theme="dark"] .tipos { background: #1a1a22; }
+.tipos > .inner > .tag { display: block; text-align: center; }
+.tipos h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); text-align: center; margin-bottom: 16px;
+}
+.tipos-intro {
+  font-family: 'Manrope', sans-serif; color: var(--gris-texto);
+  max-width: 720px; margin: 0 auto 56px; line-height: 1.7; text-align: center;
+}
+[data-theme="dark"] .tipos h2 { color: #e8eaf0; }
+[data-theme="dark"] .tipos-intro { color: #a0a8b8; }
+
+.tipo {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center; margin-bottom: 64px;
+}
+.tipo:last-of-type { margin-bottom: 0; }
+.tipo--invertido .tipo-foto { order: 2; }
+
+/* Espacio reservado para la foto de ejemplo de cada tipo de menu */
+.tipo-foto {
+  aspect-ratio: 4 / 3; width: 100%;
+  border: 2px dashed rgba(54,124,36,0.75);
+  background: rgba(54,124,36,0.03);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  text-align: center; padding: 20px;
+  background-size: cover; background-position: center;
+}
+[data-theme="dark"] .tipo-foto {
+  border-color: rgba(92,179,63,0.75); background-color: rgba(92,179,63,0.08);
+}
+.tipo-foto svg { width: 30px; height: 30px; stroke: var(--verde); fill: none; stroke-width: 1.5; }
+.tipo-foto span {
+  font-family: 'Manrope', sans-serif; font-size: 0.78rem;
+  color: var(--verde); font-weight: 600; line-height: 1.45;
+}
+/* Cuando ya haya foto real: añadir la clase .tiene-foto y el background-image inline */
+.tipo-foto.tiene-foto { border: none; background-color: transparent; }
+.tipo-foto.tiene-foto svg, .tipo-foto.tiene-foto span { display: none; }
+
+/* Variante vertical (3:4) para fotos de retrato, como la del caso de Drop Coffee */
+.tipo-foto--vertical { aspect-ratio: 3 / 4; }
+@media (max-width: 800px) {
+  /* A una sola columna, una foto 3:4 a todo el ancho queda larguísima: se limita */
+  .tipo-foto--vertical { max-width: 400px; margin-left: auto; margin-right: auto; }
+}
+
+.tipo-num {
+  font-family: 'Overpass', sans-serif; font-weight: 900;
+  font-size: 0.9rem; color: var(--verde); letter-spacing: .08em;
+  display: block; margin-bottom: 6px;
+}
+.tipo-texto h3 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.15; margin-bottom: 14px;
+}
+[data-theme="dark"] .tipo-texto h3 { color: #e8eaf0; }
+.tipo-texto p {
+  font-family: 'Manrope', sans-serif; color: var(--gris-texto);
+  font-size: 0.93rem; line-height: 1.7; margin-bottom: 12px;
+}
+.tipo-texto p:last-child { margin-bottom: 0; }
+.tipo-texto p strong {
+  font-family: 'Overpass', sans-serif; font-weight: 700; text-transform: uppercase;
+  font-size: 0.76rem; letter-spacing: .07em; color: var(--verde);
+  display: block; margin-bottom: 3px;
+}
+[data-theme="dark"] .tipo-texto p { color: #a0a8b8; }
+
+@media (max-width: 800px) {
+  .tipo { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+  .tipo--invertido .tipo-foto { order: 0; }
+  .tipos-intro { margin-bottom: 40px; }
+}
+
+/* ── PAQUETES (pagina Ordena por WhatsApp) ── */
+.paquetes { background: var(--blanco); padding: 80px 0; }
+[data-theme="dark"] .paquetes { background: #0d0d14; }
+.paquetes > .inner > .tag { display: block; text-align: center; }
+.paquetes h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); text-align: center; margin-bottom: 16px;
+}
+[data-theme="dark"] .paquetes h2 { color: #e8eaf0; }
+.paquetes-intro {
+  font-family: 'Manrope', sans-serif; color: var(--gris-texto);
+  max-width: 700px; margin: 0 auto 48px; line-height: 1.7; text-align: center;
+}
+[data-theme="dark"] .paquetes-intro { color: #a0a8b8; }
+.paquetes-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; align-items: start;
+}
+.paquete {
+  background: var(--gris-claro); padding: 32px 26px 28px;
+  border-top: 4px solid var(--verde); position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+}
+[data-theme="dark"] .paquete { background: #1a1a22; box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+.paquete--destacado { border-top-width: 8px; }
+.paquete-badge {
+  position: absolute; top: -13px; left: 26px;
+  font-family: 'Overpass', sans-serif; font-weight: 700; text-transform: uppercase;
+  font-size: 0.64rem; letter-spacing: .1em;
+  background: var(--verde); color: #FFFFFF; padding: 5px 11px;
+}
+[data-theme="dark"] .paquete-badge { color: #0d1f07; }
+.paquete h3 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: 1.1rem; margin-bottom: 14px;
+}
+[data-theme="dark"] .paquete h3 { color: #e8eaf0; }
+.paquete-precio {
+  font-family: 'Overpass', sans-serif; font-weight: 900;
+  font-size: 1.6rem; line-height: 1.1; color: var(--verde); margin-bottom: 2px;
+}
+.paquete-precio-nota {
+  font-family: 'Manrope', sans-serif; font-size: 0.78rem;
+  color: var(--gris-texto); margin-bottom: 20px;
+}
+/* Precio sin confirmar: se ve claramente como pendiente para que no salga en vivo por error */
+.precio-pendiente {
+  display: inline-block; font-family: 'Overpass', sans-serif; font-weight: 700;
+  font-size: 0.78rem; letter-spacing: .04em; text-transform: uppercase;
+  color: #8a5a00; background: rgba(246,174,45,0.28);
+  border: 1px dashed rgba(138,90,0,0.85); padding: 5px 10px;
+}
+[data-theme="dark"] .precio-pendiente {
+  color: #f9d06a; background: rgba(246,174,45,0.14);
+  border-color: rgba(249,208,106,0.5);
+}
+.paquete ul { list-style: none; }
+.paquete ul li {
+  font-family: 'Manrope', sans-serif; font-size: 0.87rem; line-height: 1.5;
+  color: var(--gris-texto); display: flex; gap: 9px; margin-bottom: 10px;
+}
+[data-theme="dark"] .paquete ul li { color: #a0a8b8; }
+.paquete ul li::before { content: '\2713'; color: var(--verde); flex-shrink: 0; font-weight: 700; }
+@media (max-width: 860px) {
+  .paquetes-grid { grid-template-columns: 1fr; gap: 32px; }
+  .paquete-badge { left: 20px; }
+}
+
+.casos { background: var(--gris-claro); padding: 80px 0; }
+.casos h2 {
+  font-family: 'Overpass', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 32px; text-align: center;
+}
+.casos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.caso-card {
+  background: var(--blanco); overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.caso-card:hover {
+  box-shadow: 0 10px 36px rgba(0,0,0,0.2);
+  transform: translateY(-3px);
+}
+.caso-img { background: #ddd; height: 200px; }
+.caso-body { padding: 24px; }
+.caso-body h4 { font-family: 'Overpass', sans-serif; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; margin-bottom: 8px; }
+.caso-body p { color: var(--gris-texto); font-size: 0.9rem; line-height: 1.6; }
+
+/* Cita del cliente dentro de un caso de exito */
+.caso-quote {
+  border-left: 4px solid var(--verde);
+  padding: 16px 20px; margin-top: 22px;
+  background: rgba(54,124,36,0.03);
+}
+[data-theme="dark"] .caso-quote { background: rgba(92,179,63,0.10); }
+.caso-quote p {
+  font-family: 'Overpass', sans-serif; font-weight: 700;
+  font-size: 1.02rem; line-height: 1.45; margin-bottom: 8px;
+  color: var(--negro-texto);
+}
+.caso-quote cite {
+  font-family: 'Manrope', sans-serif; font-style: normal;
+  font-size: 0.8rem; color: var(--verde); font-weight: 600;
+}
+/* Variante: lo que el cliente valora del servicio (no es una cita textual) */
+.caso-quote h4 {
+  font-family: 'Overpass', sans-serif; font-weight: 700; text-transform: uppercase;
+  font-size: 0.76rem; letter-spacing: .07em; color: var(--verde); margin-bottom: 10px;
+}
+.caso-quote ul { list-style: none; margin-bottom: 10px; }
+.caso-quote ul li {
+  font-family: 'Overpass', sans-serif; font-weight: 700;
+  font-size: 0.95rem; line-height: 1.4; color: var(--negro-texto);
+  display: flex; gap: 9px; margin-bottom: 7px;
+}
+.caso-quote ul li:last-child { margin-bottom: 0; }
+.caso-quote ul li::before { content: '\2014'; color: var(--verde); flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .valores-inner { grid-template-columns: 1fr; }
+  .metricas-box { grid-template-columns: 1fr; max-width: 320px; }
+  .form-row { grid-template-columns: 1fr; }
+  .sub-two-col { grid-template-columns: 1fr; }
+  .pasos-grid { grid-template-columns: 1fr; }
+  /* En una sola columna el flujo por columna dejaría los pasos en 01-02-03-04-05-06
+     igual, pero hay que devolver el auto-flow para que no fije 3 filas y desborde. */
+  .tipos .pasos-grid { grid-auto-flow: row; grid-template-rows: none; }
+  .casos-grid { grid-template-columns: 1fr; }
+  .servicios-grid { gap: 12px; }
+  .servicio-card { flex: 1 1 140px; }
+  .servicio-featured-body { padding: 32px 24px; }
+  .logos-row { gap: 28px; }
+
+  /* NAV MOBILE: limitar logo para que no empuje los botones */
+  nav#mainNav {
+    padding: 0 16px;
+    gap: 6px;
+  }
+  .nav-logo img {
+    /* Logo crece/encoge según el viewport disponible */
+    height: 36px;
+    max-width: calc(100vw - 16px - 6px - 36px - 8px - 42px - 16px);
+    /* 100vw menos: pad-L, gap, toggle, gap, hamburger, pad-R */
+    object-fit: contain;
+    object-position: left center;
+  }
+  .fb-theme-toggle {
+    width: 32px; height: 32px;
+    flex-shrink: 0;
+  }
+  .fb-theme-toggle svg { width: 15px; height: 15px; }
+  .hamburger { padding: 6px; }
+  .hamburger span { width: 20px; }
+}
+
+/* Pantallas muy pequeñas (iPhone SE, 375px, 320px) */
+@media (max-width: 400px) {
+  nav#mainNav { padding: 0 12px; gap: 4px; }
+  .nav-logo img {
+    height: 30px;
+    max-width: calc(100vw - 12px - 4px - 30px - 4px - 38px - 12px);
+  }
+  .fb-theme-toggle { width: 30px; height: 30px; }
+  .fb-theme-toggle svg { width: 14px; height: 14px; }
+  .hamburger { padding: 4px; }
+  .hamburger span { width: 18px; }
+}
+
+/* === ANIMACIONES === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero: título sube desde abajo */
+.hero-title {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroTitleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+/* Hero: botón cae desde arriba */
+.hero-btn {
+  opacity: 0;
+  transform: translateY(-32px);
+  animation: heroBtnIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+}
+@keyframes heroTitleIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroBtnIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger para cards/items observados */
+.fade-in-stagger {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in-stagger.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade desde la izquierda (para valores-left, sub-placeholder) */
+.fade-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade desde la derecha (para columnas derechas) */
+.fade-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale-in para métricas y pills */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
