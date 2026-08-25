@@ -19,7 +19,7 @@ var FB_CONFIG = {
 
   // 2. GOOGLE ANALYTICS 4 — empieza con G-
   //    Se saca en analytics.google.com → Administrar → Flujos de datos.
-  GA4_ID: 'XN1E52MXNB',
+  GA4_ID: 'G-XN1E52MXNB',
 
   // 3. PIXEL DE META — solo números
   //    Se saca en business.facebook.com → Administrador de eventos.
