@@ -230,6 +230,24 @@ var FB_SHOW = {
       .catch(function(){return false;});
   }
 
+
+  // ---- telefono: la persona escribe solo numeros, la mascara pone el formato ----
+  var tel=$('telefono');
+  if(tel){
+    tel.setAttribute('placeholder','(787) 000-0000');
+    tel.setAttribute('maxlength','14');
+    tel.setAttribute('inputmode','numeric');
+    var formato=function(valor){
+      var d=valor.replace(/\D/g,'').slice(0,10);
+      if(!d.length) return '';
+      if(d.length<4) return '('+d;
+      if(d.length<7) return '('+d.slice(0,3)+') '+d.slice(3);
+      return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);
+    };
+    tel.addEventListener('input',function(){ this.value=formato(this.value); });
+    tel.addEventListener('blur',function(){ this.value=formato(this.value); });
+  }
+
   $('f').addEventListener('submit',function(e){
     e.preventDefault();
     var NOMBRES={nombre:'tu nombre',negocio:'el nombre del negocio',telefono:'el teléfono',email:'el email'}, falta=null;
@@ -239,6 +257,12 @@ var FB_SHOW = {
       $(falta).classList.add('bad');
       $('error').textContent='Falta '+NOMBRES[falta]+'.'; $('error').hidden=false;
       $(falta).focus(); $(falta).scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    if(v('telefono').replace(/\D/g,'').length!==10){
+      $('telefono').classList.add('bad');
+      $('error').textContent='El teléfono debe tener 10 dígitos.'; $('error').hidden=false;
+      $('telefono').focus(); $('telefono').scrollIntoView({behavior:'smooth',block:'center'});
       return;
     }
     $('error').hidden=true;
