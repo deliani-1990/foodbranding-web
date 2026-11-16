@@ -78,6 +78,31 @@ var FB_CONFIG = {
     estado.setAttribute('aria-live', 'polite');
     form.appendChild(estado);
 
+    // ── TRAMPA ANTI-SPAM ──────────────────────────────────────────────────
+    // Dos filtros invisibles para la persona real:
+    //  1. Un campo "website" escondido. El visitante no lo ve ni lo puede
+    //     enfocar con el tabulador, pero los bots rellenan todo lo que
+    //     encuentran. Si viene con algo, el envío es basura.
+    //  2. El reloj. Nadie llena seis campos en menos de 4 segundos.
+    // Cuando salta una de las dos, el envío se descarta en silencio: el bot
+    // ve el mismo mensaje de siempre y no aprende a esquivar la trampa.
+    var trampa = document.createElement('input');
+    trampa.type = 'text';
+    trampa.name = 'website';
+    trampa.tabIndex = -1;
+    trampa.autocomplete = 'off';
+    trampa.setAttribute('aria-hidden', 'true');
+    trampa.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
+    form.appendChild(trampa);
+
+    var abierto = Date.now();
+
+    function esSpam() {
+      if (trampa.value) return true;
+      if (Date.now() - abierto < 4000) return true;
+      return false;
+    }
+
     function val(name) {
       var el = form.querySelector('[name="' + name + '"]');
       return el && el.value ? el.value.trim() : '';
@@ -106,6 +131,14 @@ var FB_CONFIG = {
       var boton = form.querySelector('button[type="submit"]');
       var texto = armarMensaje();
 
+      // Spam: se finge que todo salió bien y no se manda nada.
+      if (esSpam()) {
+        estado.textContent = 'Recibimos tus datos. Gracias por escribirnos.';
+        estado.className = 'form-estado form-estado--ok';
+        form.reset();
+        return;
+      }
+
       if (window.gtag) window.gtag('event', 'generate_lead');
       if (window.fbq) window.fbq('track', 'Lead');
 
@@ -124,6 +157,7 @@ var FB_CONFIG = {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: FB_CONFIG.WEB3FORMS_KEY,
+          botcheck: false,
           subject: 'Nuevo contacto desde el website — ' + (val('nombre') || 'sin nombre'),
           from_name: 'Website FoodBranding',
           nombre: val('nombre'),
